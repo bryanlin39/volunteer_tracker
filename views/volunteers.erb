@@ -4,9 +4,13 @@
     <% @volunteers.each() do |volunteer| %>
     <li><a href='/volunteers/<%= volunteer.id() %>'><%= volunteer.name() %></a></li>
       <ul>
-        <li>Project assignment: <%= volunteer.project() %></li>
+        <li>Project assignment: <%= volunteer.project().description() %></li>
         <li>Hours contributed: <%= volunteer.hours() %></li>
       </ul>
     <% end %>
   </ul>
+
+  <div class='container go_home'>
+    <a href='/'>Back to Homepage</a>
+  </div>
 </div>

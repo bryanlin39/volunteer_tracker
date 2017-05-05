@@ -1,9 +1,34 @@
 <div id='volunteer'>
   <h1><%= @volunteer.name() %></h1>
-  <h2>Project assignment: <%= @volunteer.project() %></h2>
+  <h2>Project assignment: <%= @volunteer.project().description() %></h2>
   <h2>Hours contributed: <%= @volunteer.hours() %></h2>
 
-  <p>Update volunteer info</p>
-  <p>Delete volunteer</p>
+  <hr>
 
+  <h3>Update Volunteer Information:</h3>
+  <form action='/volunteers/<%= @volunteer.id() %>/edit' method='post'>
+    <input name='_method' type='hidden' value='patch'>
+
+    <div class='form-group'>
+      <label for='hours'>Update number of hours contributed:</label>
+      <input name='hours' type='text'>
+    </div>
+
+    <button type='submit' class='btn btn-outline-primary'>Submit</button>
+  </form>
+
+  <hr>
+
+  <h3>Remove Volunteer:</h3>
+  <p>Please remove the volunteer from the database if they are no longer working.</p>
+  <form action='/volunteers/<%= @volunteer.id() %>/delete' method='post'>
+    <input name='_method' type='hidden' value='delete'>
+    <button type='submit' class='btn btn-outline-danger'>Remove</button>
+  </form>
+
+
+  <div class='container go_home'>
+    <a href='/'>Back to Homepage</a>
+  </div>
+  
 </div>

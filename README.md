@@ -13,8 +13,10 @@ Volunteer Tracker is a web application that tracks volunteers working on project
 * Clone the repository (https://github.com/bryanlin39/volunteer_tracker.git)
 * Install all gems (sinatra, sinatra-contrib, pg, rspec, capybara, pry, launchy) by typing "bundle" in the terminal
 * Set up the database by first typing "postgres" into the terminal, then opening another terminal window and typing "psql"
-* 
-* Run Sinatra by typing "ruby app.rb" in the terminal
+* In PSQL, create a database with "CREATE DATABASE volunteer_tracker;"
+  * Create a table with "CREATE TABLE projects (id serial PRIMARY KEY, description varchar);"
+  * Create another table with "CREATE TABLE volunteers (id serial PRIMARY KEY, name varchar, hours int, project_id int);"
+* Run Sinatra by typing "ruby app.rb" in another terminal window
 * Open any web browser
 * Navigate to the application home page by entering "localhost:4567" in the URL
 

@@ -55,7 +55,7 @@ describe(Volunteer) do
       project1.save()
       volunteer1 = Volunteer.new({:id => nil, :name => 'Bob', :hours => 8, :project_id => project1.id()})
       volunteer1.save()
-      expect(volunteer1.project()).to eq(project1.description())
+      expect(volunteer1.project()).to eq(project1)
     end
   end
 

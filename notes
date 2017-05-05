@@ -1,0 +1,13 @@
+<div class='form-group'>
+  <p>Reassign to another project:</p>
+  <select class='form-control' name='project'>
+    <% @projects.each() do |project| %>
+    <option value='<%= project.id() %>'><%= project.description() %></option>
+    <% end %>
+  </select>
+</div>
+
+<div class='form-group'>
+  <label for='name'>Update name:</label>
+  <input name='name' type='text'>
+</div>

@@ -41,19 +41,18 @@ class Volunteer
   end
 
   def project
-    project = DB.exec("SELECT * FROM projects WHERE id = #{self.project_id()}")
+    project = DB.exec("SELECT * FROM projects WHERE id = #{self.project_id()};")
     id = project.first().fetch('id').to_i()
     description = project.first().fetch('description')
     assigned_project = Project.new({:id => id, :description => description})
-    assigned_project.description()
+    assigned_project
   end
 
   def update(attributes)
-    @id = self.id()
     @name = attributes.fetch(:name, @name)
     @hours = attributes.fetch(:hours, @hours).to_i()
     @project_id = attributes.fetch(:project_id, @project_id).to_i()
-    DB.exec("UPDATE volunteers SET (name, hours, project_id) = ('#{@name}', #{@hours}, #{@project_id}) WHERE id = #{@id};")
+    DB.exec("UPDATE volunteers SET (name, hours, project_id) = ('#{@name}', #{@hours}, #{@project_id}) WHERE id = #{self.id()};")
   end
 
   def delete

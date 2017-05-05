@@ -65,5 +65,23 @@ end
 get('/volunteers/:id') do
   volunteer_id = params['id']
   @volunteer = Volunteer.find(volunteer_id)
+  @projects = Project.all()
   erb(:volunteer)
+end
+
+patch('/volunteers/:id/edit') do
+  volunteer_id = params['id'].to_i()
+  @volunteer = Volunteer.find(volunteer_id)
+  @projects = Project.all()
+  hours = params['hours'].to_i()
+  @volunteer.update({:hours => hours})
+  erb(:volunteer)
+end
+
+delete('/volunteers/:id/delete') do
+  volunteer_id = params['id'].to_i()
+  @volunteer = Volunteer.find(volunteer_id)
+  @volunteer.delete()
+  @volunteers = Volunteer.all()
+  erb(:volunteers)
 end
