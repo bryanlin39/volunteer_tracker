@@ -1,0 +1,23 @@
+<div id='projects'>
+  <h1>Projects</h1>
+
+  <div class='row'>
+    <div class='col-md-6'>
+      <h2>Currently Active Projects</h2>
+      <ul>
+        <% @projects.each() do |project| %>
+        <li><a href='/projects/<%= project.id() %>'><%= project.description() %></a></li>
+        <% end %>
+      </ul>
+    </div>
+
+    <div class='col-md-6'>
+      <h2>Add a New Project</h2>
+      <form action='/projects/new' method='post'>
+        <label for='description'>Project description:</label>
+        <input name='description' type='text'>
+        <button type='submit' class='btn btn-outline-success'>Add Project</button>
+      </form>
+    </div>
+  </div>
+</div>

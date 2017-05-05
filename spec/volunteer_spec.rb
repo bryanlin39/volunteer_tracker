@@ -39,4 +39,24 @@ describe(Volunteer) do
     end
   end
 
+  describe('.find') do
+    it('returns a volunteer based on its id') do
+      volunteer1 = Volunteer.new({:id => nil, :name => 'Bob', :hours => 8, :project_id => 1})
+      volunteer1.save()
+      volunteer2 = Volunteer.new({:id => nil, :name => 'Jane', :hours => 4, :project_id => 1})
+      volunteer2.save()
+      expect(Volunteer.find(volunteer2.id())).to eq(volunteer2)
+    end
+  end
+
+  describe('#project') do
+    it('returns the project that the volunteer is assigned to') do
+      project1 = Project.new({:id => nil, :description => 'food drive'})
+      project1.save()
+      volunteer1 = Volunteer.new({:id => nil, :name => 'Bob', :hours => 8, :project_id => project1.id()})
+      volunteer1.save()
+      expect(volunteer1.project()).to eq(project1)
+    end
+  end
+
 end

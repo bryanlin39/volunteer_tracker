@@ -30,4 +30,22 @@ class Volunteer
     @id = result.first().fetch('id').to_i()
   end
 
+  def self.find(id)
+    found_volunteer = nil
+    Volunteer.all().each() do |volunteer|
+      if volunteer.id() == id.to_i()
+        found_volunteer = volunteer
+      end
+    end
+    found_volunteer
+  end
+
+  def project
+    project = DB.exec("SELECT * FROM projects WHERE id = #{self.project_id()}")
+    id = project.first().fetch('id').to_i()
+    description = project.first().fetch('description')
+    assigned_project = Project.new({:id => id, :description => description})
+    assigned_project
+  end
+
 end

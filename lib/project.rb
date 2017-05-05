@@ -25,5 +25,28 @@ class Project
     result = DB.exec("INSERT INTO projects (description) VALUES ('#{@description}') RETURNING id;")
     @id = result.first().fetch('id').to_i()
   end
-  
+
+  def self.find(id)
+    found_project = nil
+    Project.all().each() do |project|
+      if project.id() == id.to_i()
+        found_project = project
+      end
+    end
+    found_project
+  end
+
+  def volunteers
+    project_volunteers = []
+    volunteers = DB.exec("SELECT * FROM volunteers WHERE project_id = #{self.id()};")
+    volunteers.each() do |volunteer|
+      id = volunteer['id'].to_i()
+      name = volunteer['name']
+      hours = volunteer['hours'].to_i()
+      project_id = volunteer['project_id'].to_i()
+      project_volunteers.push(Volunteer.new({:id => id, :name => name, :hours => hours, :project_id => project_id}))
+    end
+    project_volunteers
+  end
+
 end
