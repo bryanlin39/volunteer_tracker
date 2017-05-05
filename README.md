@@ -6,7 +6,7 @@
 
 ## Description
 
-Volunteer Tracker is a web application that tracks volunteers working on projects for a non-profit organization. The application is built with Ruby and manages data with Posgres SQL. Access the webpage directly from .
+Volunteer Tracker is a web application that tracks volunteers working on projects for a non-profit organization. The application is built with Ruby and manages data with Posgres SQL. Access the webpage directly from https://git.heroku.com/enigmatic-citadel-20369.git.
 
 ## Setup/Installation Requirements
 
