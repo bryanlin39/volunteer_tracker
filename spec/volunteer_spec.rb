@@ -68,4 +68,13 @@ describe(Volunteer) do
     end
   end
 
+  describe('#delete') do
+    it('deletes a volunteer from the database') do
+      volunteer1 = Volunteer.new({:id => nil, :name => 'Bob', :hours => 8, :project_id => 1})
+      volunteer1.save()
+      volunteer1.delete()
+      expect(Volunteer.all()).to eq([])
+    end
+  end
+
 end
