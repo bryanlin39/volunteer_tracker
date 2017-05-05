@@ -45,7 +45,7 @@ class Volunteer
     id = project.first().fetch('id').to_i()
     description = project.first().fetch('description')
     assigned_project = Project.new({:id => id, :description => description})
-    assigned_project
+    assigned_project.description()
   end
 
 end

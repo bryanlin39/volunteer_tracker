@@ -45,3 +45,9 @@ get('/volunteers') do
   @volunteers = Volunteer.all()
   erb(:volunteers)
 end
+
+get('/volunteers/:id') do
+  volunteer_id = params['id']
+  @volunteer = Volunteer.find(volunteer_id)
+  erb(:volunteer)
+end

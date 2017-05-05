@@ -3,22 +3,26 @@
 
   <div class='row'>
     <div class='col-md-6'>
-      <h2>Volunteers Registered for this Project:</h2>
-      <ul>
-        <% @project.volunteers().each() do |volunteer| %>
-        <li><%= volunteer.name %></li>
-        <% end %>
-      </ul>
+      Update this project
+      Delete this project
     </div>
 
     <div class='col-md-6'>
-      <h2>Add a New Volunteer</h2>
+      <h2>Add a New Volunteer:</h2>
       <form action='/projects/new_volunteer' method='post'>
         <input type='hidden' name='project_id' value='<%= @project.id() %>'>
         <label for='name'>Volunteer name:</label>
         <input name='name' type='text'>
         <button type='submit' class='btn btn-outline-success'>Add Volunteer</button>
       </form>
+
+      <h2>Volunteers Assigned to this Project:</h2>
+      <ul>
+        <% @project.volunteers().each() do |volunteer| %>
+        <li><a href='/volunteers/<%= volunteer.id() %>'><%= volunteer.name %></a></li>
+        <% end %>
+      </ul>
+
     </div>
   </div>
 </div>
