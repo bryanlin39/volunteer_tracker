@@ -55,7 +55,16 @@ describe(Volunteer) do
       project1.save()
       volunteer1 = Volunteer.new({:id => nil, :name => 'Bob', :hours => 8, :project_id => project1.id()})
       volunteer1.save()
-      expect(volunteer1.project()).to eq(project1)
+      expect(volunteer1.project()).to eq(project1.description())
+    end
+  end
+
+  describe('#udpate') do
+    it('updates the volunteer information in the database') do
+      volunteer1 = Volunteer.new({:id => nil, :name => 'Bob', :hours => 8, :project_id => 1})
+      volunteer1.save()
+      volunteer1.update({:hours => 10})
+      expect(volunteer1.hours()).to eq(10)
     end
   end
 

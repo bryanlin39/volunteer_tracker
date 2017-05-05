@@ -48,4 +48,12 @@ class Volunteer
     assigned_project.description()
   end
 
+  def update(attributes)
+    @id = self.id()
+    @name = attributes.fetch(:name, @name)
+    @hours = attributes.fetch(:hours, @hours).to_i()
+    @project_id = attributes.fetch(:project_id, @project_id).to_i()
+    DB.exec("UPDATE volunteers SET (name, hours, project_id) = ('#{@name}', #{@hours}, #{@project_id}) WHERE id = #{@id};")
+  end
+
 end

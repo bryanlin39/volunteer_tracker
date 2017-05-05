@@ -52,4 +52,13 @@ describe(Project) do
     end
   end
 
+  describe('#udpate') do
+    it('updates the project descriptions in the database') do
+      project1 = Project.new({:id => nil, :description => 'food drive'})
+      project1.save()
+      project1.update({:description => 'freeway cleanup'})
+      expect(project1.description()).to eq('freeway cleanup')
+    end
+  end
+
 end

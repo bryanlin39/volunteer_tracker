@@ -49,4 +49,10 @@ class Project
     project_volunteers
   end
 
+  def update(attributes)
+    @id = self.id()
+    @description = attributes.fetch(:description, @description)
+    DB.exec("UPDATE projects SET description = '#{@description}' WHERE id = #{@id};")
+  end
+
 end
